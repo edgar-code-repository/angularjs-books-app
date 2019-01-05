@@ -1,0 +1,39 @@
+
+<div class="container">
+	<div id="menu-bar">
+		<h1>Create category</h1>
+		<ul>
+			<li><a href="#/authorsList">Authors</a></li>
+			<li><a href="#/categoriesList">Categories</a></li>					
+			<li><a href="#/">Books</a></li>
+		</ul>
+	</div>
+</div>
+
+<form name="newCategoryForm">
+	<div class="container">
+		<div class="row newAuthorRow">
+			<div class="col-sm-8">
+				<div class="input-group">
+					<span class="input-group-addon">Name:</span>
+					<input type="text" class="form-control" id="name" name="name" ng-model="name" required />		
+				</div>
+				
+			</div>
+			<div class="col-sm-4">
+				<span ng-show="newCategoryForm.name.$untouched && newCategoryForm.name.$invalid">Name is required.</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">	
+		<div class="row newBookRow">
+			<div class="col-sm-12">	
+				<input type="button" value="Save category" class="btn btn-primary" ng-click="saveCategory();" />&nbsp;
+				<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/categoriesList');" />
+			</div>
+		</div>
+	</div>
+</form>
+
+

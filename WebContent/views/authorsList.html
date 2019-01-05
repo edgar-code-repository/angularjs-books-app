@@ -1,0 +1,46 @@
+
+<div class="container">
+	<div id="menu-bar">
+		<h1>Authors</h1>
+		<ul>
+			<li><a href="#/authorsList">Authors</a></li>
+			<li><a href="#/categoriesList">Categories</a></li>					
+			<li><a href="#/">Books</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="container"> 
+	<div class="row categoryRow">	
+		<div class="col-sm-12">
+			<div class="input-group">
+				<input type="button" value="New author" class="btn btn-primary" ng-click="goToLocation('/createAuthor');" />
+			</div>		
+		</div>
+	</div>
+</div>
+
+<div class="container">  
+    <div id="divCategories">
+        <div class="col-sm-4" ng-repeat="author in authors | orderBy:'firstName'">
+        	<div class="thumbnail" style="height:130px">		
+	        	<div class="caption">
+	        		<h3>&nbsp;{{ author.firstName + " " + author.lastName }}</h3>
+
+		        	<button class="btn btn-xs btn-success" ng-click="editAuthor(author)">
+		        		Edit
+		        	</button>
+		        	
+		        	<button class="btn btn-xs btn-danger" ng-click="deleteAuthor(author.authorId, author.firstName + ' ' + author.lastName)">
+		        		Delete
+		        	</button>
+		        	     	
+	         	</div>
+             </div>
+        </div>
+
+    </div>
+
+    <div id="divErrorMessage" ng-show="flagError">{{errorMessage}}</div>
+    
+</div>

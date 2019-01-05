@@ -1,0 +1,129 @@
+
+<div class="container"> 
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Edit Book</a>
+			</div>
+		</div>
+	</nav>
+	
+</div>
+
+<form name="editBookForm">
+	<div id="formNewBook" ng-show="!flagContinueSaveBook">
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Name:</span>
+						<input type="text" class="form-control" id="bookName" name="bookName" ng-model="bookName" required />		
+					</div>
+					<span ng-show="newBookForm.bookName.$untouched && newBookForm.bookName.$invalid">The name is required.</span>
+				</div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">ISBN:</span>
+						<input type="text" class="form-control" id="bookIsbn" name="bookIsbn" ng-model="bookIsbn" only-numbers required />			
+					</div>	
+					<span ng-show="newBookForm.bookIsbn.$untouched && newBookForm.bookIsbn.$invalid">The ISBN is required.</span>	
+				</div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Category:</span>
+						<select class="form-control" id="selectCategories" name="selectCategories" 
+								ng-model="categorySelectedId" 
+								ng-options="category.categoryId as category.name for category in categories" required>
+							<option value="">Select Category</option>
+						</select>		
+					</div>
+					<span ng-show="newBookForm.selectCategories.$untouched">The category is required.</span>
+				</div>
+				
+				
+
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-12">
+					<span class="input-group-addon">Description:</span>
+					<textarea class="form-control" id="bookDescription" name="bookDescription" ng-model="bookDescription" required rows="15"></textarea>		
+					<span ng-show="newBookForm.bookDescription.$untouched && newBookForm.bookDescription.$invalid">The description is required.</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">	
+			<div class="row newBookRow">
+				<div class="col-sm-12">	
+					<input type="button" value="Continue" class="btn btn-primary" ng-click="continueAddBook();" />&nbsp;
+					<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/');" />
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="formAuthorsBook" ng-show="flagContinueSaveBook">
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Book image:</span>
+						<input type="text" class="form-control" id="bookName" name="bookName" ng-model="bookImage" readonly />
+					</div>
+				</div>					
+			</div>		
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Change image:</span>
+						<input type="file" file-model="file" name="bookImage">
+					</div>
+				</div>					
+			</div>	
+			<div style="padding-bottom:35px;"></div>			
+		</div>
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Authors:</span>
+						<select class="form-control" id="selectAuthors" ng-model="authorsSelectedId">
+							<option value="-1" >All</option>
+							<option ng-repeat="author in authors" value="{{ author.authorId }}">{{ author.firstName + " " + author.lastName }}</option>
+						</select>		
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<input type="button" value="Add author" class="btn btn-primary" ng-click="addAuthor();" />
+				</div>		
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row newBookRow">		
+				<div class="col-sm-4">
+					<ul>
+						<li style="padding-bottom:5px;" ng-repeat="addedAuthor in selectedAuthors"> 
+							{{ addedAuthor.firstName + " " + addedAuthor.lastName }}&nbsp;<button class="btn btn-xs btn-success" ng-click="deleteAuthorFromList(addedAuthor);">Delete</button>
+						</li>
+					</ul>
+				</div>		
+			</div>
+		</div>
+		
+		<div class="container">	
+			<div class="row newBookRow">
+				<div class="col-sm-12">	
+					<input type="button" value="Save book" class="btn btn-primary" ng-click="updateBook();" />
+					<input type="button" value="Back" class="btn btn-primary" ng-click="continueCancel();" />
+					<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/');" />
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+

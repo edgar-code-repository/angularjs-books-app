@@ -1,0 +1,59 @@
+
+
+<div class="container">
+	<div id="menu-bar">
+		<h1>Programming Books</h1>
+		<ul>
+			<li><a href="#/authorsList">Authors</a></li>
+			<li><a href="#/categoriesList">Categories</a></li>					
+			<li><a href="#/">Books</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="container"> 
+	<div class="row categoryRow">
+		<div class="col-sm-6">
+			<div class="input-group">
+				<span class="input-group-addon">Category:</span>
+				<select class="form-control" id="selectCategory" ng-model="categorySelectedId">
+					<option value="-1" >All</option>
+					<option ng-repeat="category in categories" value="{{ category.categoryId }}">{{ category.name }}</option>
+				</select>		
+			</div>
+		</div>		
+		<div class="col-sm-6">
+			<div class="input-group">
+				<input type="button" value="New Book" class="btn btn-primary" ng-click="goToLocation('/createBook');" />
+			</div>		
+		</div>
+	</div>
+</div>
+
+<div class="container">  
+    <div id="divBooks" ng-show="flagContent">
+        <div class="col-sm-4" ng-repeat="book in books | categoryFilter:categorySelectedId | orderBy:'name'">
+        	<div class="thumbnail" style="height:400px">
+        		<img style="height:220px; width:180px;" ng-src="books-images/{{book.imageName}}" />      		
+	        	<div class="caption">
+	        		<div ng-hide="showDetails == true">
+		        		<h3>&nbsp;{{ book.name }}</h3>
+		        		<h4>
+		        			Author(s):
+		        			<span ng-repeat="author in book.authors"> 
+		        				{{ author.firstName + " " + author.lastName }} <span ng-if="!$last">,</span>
+		        			</span>
+		        		</h4>
+		        	</div>
+		        	
+		        	<button class="btn btn-xs btn-primary" ng-click="viewBook(book);">View</button>
+		        	<button class="btn btn-xs btn-success" ng-click="editBook(book);">Edit</button>
+		        	<button class="btn btn-xs btn-danger" ng-click="deleteBook(book.bookId);">Delete</button>	     	
+		        	
+	         	</div>
+             </div>
+        </div>
+    </div>
+    <div id="divErrorMessage" ng-show="flagError">{{errorMessage}}</div>
+</div>
+

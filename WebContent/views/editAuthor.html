@@ -1,0 +1,50 @@
+
+<div class="container">
+	<div id="menu-bar">
+		<h1>Edit author</h1>
+		<ul>
+			<li><a href="#/authorsList">Authors</a></li>
+			<li><a href="#/categoriesList">Categories</a></li>					
+			<li><a href="#/">Books</a></li>
+		</ul>
+	</div>
+</div>
+
+<form name="editAuthorForm">
+	<input type="hidden" ng-model="authorId" />
+	<div class="container">
+		<div class="row newAuthorRow">
+			<div class="col-sm-8">
+				<div class="input-group">
+					<span class="input-group-addon">Firstname:</span>
+					<input type="text" class="form-control" id="firstName" name="firstName" ng-model="authorFirstName" required />		
+				</div>
+				
+			</div>
+			<div class="col-sm-4">
+				<span ng-show="editAuthorForm.firstName.$untouched && editAuthorForm.firstName.$invalid">Firstname is required.</span>
+			</div>
+		</div>
+		<div class="row newAuthorRow">
+			<div class="col-sm-8">
+				<div class="input-group">
+					<span class="input-group-addon">Lastname:</span>
+					<input type="text" class="form-control" id="lastName" name="lastName" ng-model="authorLastName" required />		
+				</div>
+				
+			</div>
+			<div class="col-sm-4">
+				<span ng-show="editAuthorForm.lastName.$untouched && editAuthorForm.lastName.$invalid">Lastname is required.</span>
+			</div>
+		</div>		
+	</div>
+	
+	<div class="container">	
+		<div class="row newBookRow">
+			<div class="col-sm-12">	
+				<input type="button" value="Save author" class="btn btn-primary" ng-click="updateAuthor();" />&nbsp;
+				<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/authorsList');" />
+			</div>
+		</div>
+	</div>
+</form>

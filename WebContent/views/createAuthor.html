@@ -1,0 +1,50 @@
+
+<div class="container">
+	<div id="menu-bar">
+		<h1>Create author</h1>
+		<ul>
+			<li><a href="#/authorsList">Authors</a></li>
+			<li><a href="#/categoriesList">Categories</a></li>					
+			<li><a href="#/">Books</a></li>
+		</ul>
+	</div>
+</div>
+
+<form name="newAuthorForm">
+	<div class="container">
+		<div class="row newAuthorRow">
+			<div class="col-sm-8">
+				<div class="input-group">
+					<span class="input-group-addon">First name:</span>
+					<input type="text" class="form-control" id="firstName" name="firstName" ng-model="firstName" required />		
+				</div>
+				
+			</div>
+			<div class="col-sm-4">
+				<span ng-show="newAuthorForm.firstName.$untouched && newAuthorForm.firstName.$invalid">Firstname is required.</span>
+			</div>
+		</div>
+		<div class="row newAuthorRow">			
+			<div class="col-sm-8">
+				<div class="input-group">
+					<span class="input-group-addon">Last name:</span>
+					<input type="text" class="form-control" id="lastName" name="lastName" ng-model="lastName" required />			
+				</div>	
+			</div>
+			<div class="col-sm-4">
+				<span ng-show="newAuthorForm.lastName.$untouched && newAuthorForm.lastName.$invalid">Last name is required.</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">	
+		<div class="row newBookRow">
+			<div class="col-sm-12">	
+				<input type="button" value="Save author" class="btn btn-primary" ng-click="saveAuthor();" />&nbsp;
+				<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/authorsList');" />
+			</div>
+		</div>
+	</div>
+</form>
+
+

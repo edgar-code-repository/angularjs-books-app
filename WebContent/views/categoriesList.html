@@ -1,0 +1,46 @@
+
+<div class="container">
+	<div id="menu-bar">
+		<h1>Categories</h1>
+		<ul>
+			<li><a href="#/authorsList">Authors</a></li>
+			<li><a href="#/categoriesList">Categories</a></li>					
+			<li><a href="#/">Books</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="container"> 
+	<div class="row categoryRow">	
+		<div class="col-sm-12">
+			<div class="input-group">
+				<input type="button" value="New Category" class="btn btn-primary" ng-click="goToLocation('/createCategory');" />
+			</div>		
+		</div>
+	</div>
+</div>
+
+<div class="container">  
+    <div id="divCategories">
+        <div class="col-sm-4" ng-repeat="category in categories | orderBy:'name'">
+        	<div class="thumbnail" style="height:130px">		
+	        	<div class="caption">
+	        		<h3>&nbsp;{{ category.name }}</h3>
+
+		        	<button class="btn btn-xs btn-success" ng-click="editCategory(category)">
+		        		Edit
+		        	</button>
+		        	
+		        	<button class="btn btn-xs btn-danger" ng-click="deleteCategory(category.categoryId, category.name)">
+		        		Delete
+		        	</button>
+		        	     	
+	         	</div>
+             </div>
+        </div>
+
+    </div>
+
+    <div id="divErrorMessage" ng-show="flagError">{{errorMessage}}</div>
+    
+</div>

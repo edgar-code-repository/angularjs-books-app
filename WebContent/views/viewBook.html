@@ -1,0 +1,102 @@
+
+<div class="container"> 
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">View Book</a>
+			</div>
+		</div>
+	</nav>
+	
+</div>
+
+<form name="editBookForm">
+	<div id="formNewBook" ng-show="!flagContinueViewBook">
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Name:</span>
+						<input type="text" class="form-control" id="bookName" name="bookName" ng-model="bookName" readonly />		
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">ISBN:</span>
+						<input type="text" class="form-control" id="bookIsbn" name="bookIsbn" ng-model="bookIsbn" only-numbers readonly />			
+					</div>		
+				</div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Category:</span>
+						<input type="text" class="form-control" id="bookIsbn" name="bookIsbn" ng-model="bookCategory" readonly />		
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-12">
+					<span class="input-group-addon">Description:</span>
+					<textarea class="form-control" id="bookDescription" name="bookDescription" ng-model="bookDescription" readonly rows="15"></textarea>		
+				</div>
+			</div>
+		</div>
+		
+		<div class="container">	
+			<div class="row newBookRow">
+				<div class="col-sm-12">	
+					<input type="button" value="Continue" class="btn btn-primary" ng-click="continueViewBook();" />&nbsp;
+					<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/');" />
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="formAuthorsBook" ng-show="flagContinueViewBook">
+		<div class="container">
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Book image:</span>
+						<input type="text" class="form-control" id="bookName" name="bookName" ng-model="bookImage" readonly />
+					</div>
+				</div>					
+			</div>
+			<div style="padding-bottom:35px;"></div>			
+		</div>
+		<div class="container">		
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">Authors:</span>	
+					</div>
+				</div>	
+			</div>
+			<div class="row newBookRow">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<ul>
+							<li style="padding-bottom:5px;" ng-repeat="addedAuthor in selectedAuthors"> 
+								{{ addedAuthor.firstName + " " + addedAuthor.lastName }}&nbsp;
+							</li>
+						</ul>	
+					</div>
+				</div>	
+			</div>			
+		</div>
+		
+		<div class="container">	
+			<div class="row newBookRow">
+				<div class="col-sm-12">	
+					<input type="button" value="Back" class="btn btn-primary" ng-click="continueCancel();" />
+					<input type="button" value="Cancel" class="btn btn-primary" ng-click="goToLocation('/');" />
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
