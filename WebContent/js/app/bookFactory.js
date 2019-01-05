@@ -1,9 +1,16 @@
 angular
 	.module("myApp")
 	.factory('BookFactory', function($http) {
+		
+	    apiHost = document.getElementById("apiHost").value;
+	    apiPort = document.getElementById("apiPort").value;
+	    apiName = document.getElementById("apiName").value;
+	    
 	    var factory = {};
 	    var books = [];
-	    var urlBase = "http://localhost:9096/bookstore-api/books";
+	    
+	    var urlBase = "http://" + apiHost + ":" + apiPort + apiName + "/books";
+	    console.log("BookFactory - urlBase: " + urlBase);
 	    
 	    factory.getBooks = function() {
 	    	//console.log("BookFactory - Ejecutando getBooks...");

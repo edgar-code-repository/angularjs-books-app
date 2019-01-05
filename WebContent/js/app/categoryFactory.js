@@ -2,7 +2,9 @@ angular
 	.module("myApp")
 	.factory('CategoryFactory', function($http) {
 	    var factory = {};
-	    var urlBase = "http://localhost:9096/bookstore-api/categories";
+	    
+	    var urlBase = "http://" + apiHost + ":" + apiPort + apiName + "/categories";
+	    console.log("CategoryFactory - urlBase: " + urlBase);	    
 	    
 	    factory.getCategories = function() {
 	    	//console.log("CategoryFactory - Ejecutando getCategories...");

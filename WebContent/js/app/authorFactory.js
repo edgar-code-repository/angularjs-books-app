@@ -3,7 +3,10 @@ angular
 	.factory('AuthorFactory', function($http) {
 	    var factory = {};
 	    var books = [];
-	    var urlBase = "http://localhost:9096/bookstore-api/authors";
+	    
+	    var urlBase = "http://" + apiHost + ":" + apiPort + apiName + "/authors";
+	    console.log("AuthorFactory - urlBase: " + urlBase);
+	    
 	    
 	    factory.getAuthors = function() {
 	    	return $http.get(urlBase);
@@ -13,11 +16,7 @@ angular
 	        return $http.post(urlBase, newAuthor);
 	    };  
 	    
-	    factory.updateAuthor = function(authorModified) {
-	    	console.log("AuthorFactory - updateAuthor - authorModified.authorId: " + authorModified.authorId);
-	    	console.log("AuthorFactory - updateAuthor - authorModified.firstName: " + authorModified.firstName);
-	    	console.log("AuthorFactory - updateAuthor - authorModified.lastName: " + authorModified.lastName);
-	    	
+	    factory.updateAuthor = function(authorModified) {	    	
 	        var updateUrl = urlBase + "/" + authorModified.authorId;
 	        return $http.put(updateUrl, authorModified);
 	    }; 

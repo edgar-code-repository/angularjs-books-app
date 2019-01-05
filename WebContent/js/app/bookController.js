@@ -1,7 +1,7 @@
 angular
 	.module("myApp")
 	.controller('BookController', function($scope, BookFactory, CategoryFactory, $location, SharedBookService, $route) {
-	    //console.log("BookController - Inicio");
+	    console.log("BookController - Inicio");
 	    
 	    $scope.books = [];
 	    $scope.categories = [];
@@ -31,7 +31,7 @@ angular
 	            $scope.errorMessage = "";
 	        },
 	        function errorCallback(response) {
-	        	console.log("BookController - getBooks - Llamada exitosa a BookFactory.getBooks()");
+	        	console.log("BookController - getBooks - Error al llamar a BookFactory.getBooks()");
 	            console.log("getBooks - Response status: " + response.status);
 	            console.log("getBooks - Response status text: " + response.statusText);
 	            console.log("getBooks - Response data: " + response.data);
