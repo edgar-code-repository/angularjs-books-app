@@ -23,14 +23,14 @@ public class ReadEnvironmentListener implements ServletContextListener{
 		  
 		  logger.debug("[ReadEnvironmentListener][contextInitialized][START]");
 		  
-		  logger.debug("[ReadEnvironmentListener][contextInitialized][BOOKSTORE_API_NAME: " + System.getenv("BOOKSTORE_API_NAME") + "]");
-		  logger.debug("[ReadEnvironmentListener][contextInitialized][BOOKSTORE_API_PORT: " + System.getenv("BOOKSTORE_API_PORT") + "]");
-		  logger.debug("[ReadEnvironmentListener][contextInitialized][BOOKSTORE_API_HOST: " + System.getenv("BOOKSTORE_API_HOST") + "]");
+		  logger.debug("[ReadEnvironmentListener][contextInitialized][BOOKS_REST_APP_CONTEXT: " + System.getenv("BOOKS_REST_APP_CONTEXT") + "]");
+		  logger.debug("[ReadEnvironmentListener][contextInitialized][BOOKS_REST_APP_PORT: " + System.getenv("BOOKS_REST_APP_PORT") + "]");
+		  logger.debug("[ReadEnvironmentListener][contextInitialized][BOOKS_REST_APP_HOST: " + System.getenv("BOOKS_REST_APP_HOST") + "]");
 		   
 		  ServletContext servletContext = context.getServletContext();
-		  servletContext.setAttribute("BOOKSTORE_API_NAME", System.getenv("BOOKSTORE_API_NAME"));
-		  servletContext.setAttribute("BOOKSTORE_API_PORT", System.getenv("BOOKSTORE_API_PORT"));
-		  servletContext.setAttribute("BOOKSTORE_API_HOST", System.getenv("BOOKSTORE_API_HOST"));		  
+		  servletContext.setAttribute("BOOKSTORE_API_NAME", System.getenv("BOOKS_REST_APP_CONTEXT"));
+		  servletContext.setAttribute("BOOKSTORE_API_PORT", System.getenv("BOOKS_REST_APP_PORT"));
+		  servletContext.setAttribute("BOOKSTORE_API_HOST", System.getenv("BOOKS_REST_APP_HOST"));		  
 		  
 		  logger.debug("[ReadEnvironmentListener][contextInitialized][END]");
 		  
